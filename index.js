@@ -8,10 +8,13 @@ program.version (package.version);
 
 program 
     .command('cadastrar')
-    .argument('[preco] [marca]')
+    .argument('[preco]', 'preco do produto')
+    .argument('[marca]', 'marca do produto')
     .description('Cadastra um novo produto')
-    .action((produtos ) => {
+    .action((produtos, marca, preco ) => {
         console.log(produtos);
+        console.log('marca:', marca);
+        console.log('preço:', preco);
     });
 
 program.parse(process.argv);
