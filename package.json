@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "projeto-cli": "index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mgryan5407/produtos-cli.git"
@@ -15,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/mgryan5407/produtos-cli/issues"
   },
-  "homepage": "https://github.com/mgryan5407/produtos-cli#readme"
+  "homepage": "https://github.com/mgryan5407/produtos-cli#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cli-table": "^0.3.6",
+    "commander": "^8.2.0",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "shelljs": "^0.8.4"
+  }
 }

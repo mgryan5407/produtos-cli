@@ -2,14 +2,15 @@
 
 const program = require('commander');
 const package = require('./package.json');
+const shell = require ('shelljs');
 
 program.version (package.version);
 
 program 
     .command('cadastrar')
-    .argument('[preço]')
+    .argument('[preco] [marca]')
     .description('Cadastra um novo produto')
-    .action((produtos) => {
+    .action((produtos ) => {
         console.log(produtos);
     });
 
