@@ -3,6 +3,8 @@
 const program = require('commander');
 const shell = require ('shelljs');
 const inquirer = require ('inquirer');
+const { join } = require('path');
+const fs = require('fs');
 
 const package = require('./package.json');
 const produtosPath = join(__dirname, 'produtos.json')
@@ -25,11 +27,11 @@ program
     .command('cadastrar')
     .description('Cadastra um novo produto')
     .action(async ()  => {
-        let asnwers = await inquirer.prompt([
+        let answers = await inquirer.prompt([
             {
                 type: 'input',
                 name: 'nome',
-                message: 'Informe o nome do produto',
+                message: 'Informe o nome do produto:',
                 validate: value => value ? true : 'Não é permitido um nome vazio'
             },
             {
@@ -46,15 +48,11 @@ program
             }
     ]);
 
-let produto = {
-    name: answers.nome,
-    preco: answers.preco,
-    marca: answers.marca
-}
-
-console.log('Produto cadastrado com sucesso' );
-console.log('Nome : ' + produto.nome );
-console.log('Preço: ' + produto.preco );
-console.log('Marca: ' + produto.marca );
+    const data = getJson(produtosPath);
+    data.push ({
+        title: produtos-cli || answers.produtos-cli,
+        done : false
+    });
+    saveJson(produtosPath, data);
     });
 program.parse(process.argv);
