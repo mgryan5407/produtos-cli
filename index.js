@@ -1,9 +1,23 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const package = require('./package.json');
 const shell = require ('shelljs');
 const inquirer = require ('inquirer');
+
+const package = require('./package.json');
+const produtosPath = join(__dirname, 'produtos.json')
+
+const getJson = (path) => {
+    const data = fs.existsSync(path) ? fs.readFileSync(path) : [];
+    try {
+        return JSON.parse(data);
+    } catch (e) {
+        return [];
+    }
+};
+
+const saveJson = (path, data) => fs.writeFileSync(path, JSON.stringify(data, null, '\t'))
+
 
 program.version (package.version);
 

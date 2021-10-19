@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "projeto-cli": "index.js"
+    "produtos-cli": "index.js"
   },
   "repository": {
     "type": "git",
