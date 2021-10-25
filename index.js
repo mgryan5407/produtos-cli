@@ -46,13 +46,49 @@ program
                 message: 'Informe a marca: ',
                 validate: value => value ? true : 'Insira a marca do produto'
             }
+
     ]);
 
-    const data = getJson(produtosPath);
-    data.push ({
-        title: produtos-cli || answers.produtos-cli,
-        done : false
-    });
-    saveJson(produtosPath, data);
-    });
+    let produto = {
+        name: answers.nome,
+        preco: answers.preco,
+        marca: answers.marca
+    }
+   
+
+    const listaProdutos = getJson(produtosPath);
+   // listaProdutos.push (produto);
+    //saveJson(produtosPath, listaProdutos);
+
+    //console.log(listaProdutos[produto.name]);
+    program
+    .command('buscar')
+    .description('Busca um produto')
+    .action(async (listaProdutos) => {
+        let produto = {
+            name: answers.nome,
+            preco: answers.preco,
+            marca: answers.marca 
+        }
+        if (!produto){
+            answers = await inquirer.prompt([
+                {
+                type: 'input',
+                name: 'mostra',
+                message: 'Mostra o id' ,
+                validate: value => value ? true : 'Insira o id'
+
+                listaProdutos.map((representacaodoproduto, index) =>
+            console.log(representacaodoproduto.name)
+            }
+            ])
+        }
+    })
+        listaProdutos.map((representacaodoproduto, index) =>
+      console.log(representacaodoproduto.name)
+    );
+});
+
+
+
 program.parse(process.argv);

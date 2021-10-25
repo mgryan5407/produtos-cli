@@ -1,0 +1,26 @@
+[
+	{
+		"title": "produtos-cli",
+		"done": false
+	},
+	{
+		"name": "carro",
+		"preco": 100,
+		"marca": "nissan"
+	},
+	{
+		"name": "fruta",
+		"preco": 10,
+		"marca": "maça"
+	},
+	{
+		"name": "comida",
+		"preco": 50,
+		"marca": "chocolate"
+	},
+	{
+		"name": "chocolate",
+		"preco": 50,
+		"marca": "nestle"
+	}
+]
