@@ -54,6 +54,7 @@ program
         preco: answers.preco,
         marca: answers.marca
     }
+});
    
 
     const listaProdutos = getJson(produtosPath);
@@ -71,15 +72,13 @@ program
             marca: answers.marca 
         }
         if (!produto){
+            let 
             answers = await inquirer.prompt([
                 {
                 type: 'input',
                 name: 'mostra',
                 message: 'Mostra o id' ,
                 validate: value => value ? true : 'Insira o id'
-
-                listaProdutos.map((representacaodoproduto, index) =>
-            console.log(representacaodoproduto.name)
             }
             ])
         }
@@ -87,7 +86,6 @@ program
         listaProdutos.map((representacaodoproduto, index) =>
       console.log(representacaodoproduto.name)
     );
-});
 
 
 
