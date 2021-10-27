@@ -54,39 +54,55 @@ program
         preco: answers.preco,
         marca: answers.marca
     }
-});
-   
 
     const listaProdutos = getJson(produtosPath);
+
+    listaProdutos.push(produto);
+
+    saveJson(produtosPath, listaProdutos);
+    console.log('Produto cadastrado com sucesso');
+});
+   
    // listaProdutos.push (produto);
     //saveJson(produtosPath, listaProdutos);
 
     //console.log(listaProdutos[produto.name]);
     program
     .command('buscar')
+    .argument('[nome]')
     .description('Busca um produto')
-    .action(async (listaProdutos) => {
-        let produto = {
-            name: answers.nome,
-            preco: answers.preco,
-            marca: answers.marca 
+    .action(async (nome) => {
+        let answers;
+        if(!nome) {
+        answers = await inquirer.prompt([
+        {
+        type:'input',
+        name:'nomeDigitado',
+        message: 'Informe o nome do produto: ', 
+        validate: value => value ? true : 'Nome é obrigatório'
         }
-        if (!produto){
-            let 
-            answers = await inquirer.prompt([
-                {
-                type: 'input',
-                name: 'mostra',
-                message: 'Mostra o id' ,
-                validate: value => value ? true : 'Insira o id'
+        ]);
+        }
+
+        nome = nome || answers.nomeDigitado;
+        const listaProdutos = getJson(produtosPath);
+        listaProdutos.map ((produto) => {
+            if(produto.nome == nome ) {
+                console.log(produto);
+                process.exit(0);
             }
-            ])
-        }
+        });
+        console.log('Produto ' + nome + ' não encontrado')
+    });
+
+    program
+    .command('excluir')
+    .argument('[nome]')
+    .description('Exclui um produto')
+    .action(async (nome) => {
+        let answers;
+        
     })
-        listaProdutos.map((representacaodoproduto, index) =>
-      console.log(representacaodoproduto.name)
-    );
-
-
 
 program.parse(process.argv);
+
